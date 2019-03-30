@@ -1,0 +1,8 @@
+*.mp4
+*.jpeg
+/target_folder/*
+/target_folder_1/*
+/VideoSets/*
+/train_videos/*
+/train_videos_test/*
+/__pycache__/*
