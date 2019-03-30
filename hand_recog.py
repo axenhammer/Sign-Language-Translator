@@ -1,17 +1,13 @@
+#!/usr/bin/python3
 import cv2
 import numpy as np
 import copy
 import math
 
 # Environment:
-# OS    : Mac OS High Sierra
-# python: 2.7
+# OS    : Win32
+# python: 3
 # opencv: 3.4.0
-
-# Author
-# asshatter
-# github link : https://github.com/asshatter
-# website : https://asshatter.github.io
 
 
 def calculateFingers(res, drawing):
