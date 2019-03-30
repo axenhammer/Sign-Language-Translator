@@ -162,17 +162,15 @@ def main():
     while capture.isOpened():
         pressed_key = cv2.waitKey(1)
         _, frame = capture.read()
-
+        """
         if pressed_key & 0xFF == ord('z'):
             is_hand_hist_created = True
             hand_hist = hand_histogram(frame)
-
         if is_hand_hist_created:
             manage_image_opr(frame, hand_hist)
-
         else:
             frame = draw_rect(frame)
-
+        """
         cv2.imshow("Live Feed", rescale_frame(frame))
 
         if pressed_key == 27:
