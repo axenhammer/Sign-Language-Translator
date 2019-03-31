@@ -6,3 +6,4 @@
 /train_videos/*
 /train_videos_test/*
 /__pycache__/*
+fpssplit.py
