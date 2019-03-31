@@ -1,4 +1,6 @@
+from matplotlib import pyplot as plt
 import numpy as np
+import edge_detection as ed
 import cv2
 
 """
@@ -43,6 +45,7 @@ def handsegment(frame):
     converted = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     skinMask = cv2.inRange(converted, lower, upper)
     output = cv2.bitwise_and(frame, frame, mask=skinMask)
+    # f = ed.edgedetection(output)
     return output
 
 if __name__ == '__main__':
