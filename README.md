@@ -2,10 +2,11 @@
 [![Language](https://img.shields.io/badge/language-python-blue.svg?style=flat)](https://www.python.org)
 
 ## Introduction
+We aim to raise our AI model using the Machine Learning, Image Processing which involved repeatedly gesturing in front of a camera to teach the system the fundamentals of sign language. This is to combat the differences between various Country’s sign languages and their regional dialects without compromising on accuracy while giving way to crowd-sourcing. 
 
 
 ## Intermediate Outputs
-#### RAW Feed
+#### RAW Feed (1920x1080 @ 60 fps)
 <img src="/docs/gifs/raw_everyone.gif" width="360"/>
 
 #### Extraction of skin tones (Removal of unwanted entities)
