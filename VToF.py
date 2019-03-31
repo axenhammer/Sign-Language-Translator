@@ -8,7 +8,7 @@ import pickle
 import argparse
 
 hc = []
-fps = 60
+fps = 120
 
 # Perform Auto Canny in automatic mode
 def auto_canny(image, sigma=0.33):
