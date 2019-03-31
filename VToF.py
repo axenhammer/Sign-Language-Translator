@@ -62,7 +62,7 @@ def convertToEdge(gesture_folder, target_folder, swap_):
                 # show the images
                 # fName = mData + "\\" + imagePath
                 # print("Storing: ", fName)
-                cv2.imwrite(fName , tight)
+                cv2.imwrite(fName , wide)
                 #cv2.imshow("Original", image)
                 #cv2.imshow("Edges", np.hstack([wide, tight, auto]))
 
