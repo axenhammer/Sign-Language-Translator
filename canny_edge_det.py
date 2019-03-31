@@ -3,7 +3,7 @@ import argparse
 import glob
 import sys
 import cv2
-#from PIL import Image
+# from PIL import Image
 
 def auto_canny(image, sigma=0.33):
     # compute the median of the single channel pixel intensities

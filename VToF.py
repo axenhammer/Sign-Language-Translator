@@ -1,15 +1,28 @@
+from os.path import join, exists
+from tqdm import tqdm
+import tohand as th
+import numpy as np
 import cv2
 import os
 import pickle
-from os.path import join, exists
-import tohand as th
 import argparse
-from tqdm import tqdm
 
 hc = []
+fps = 60
 
+# Perform Auto Canny in automatic mode
+def auto_canny(image, sigma=0.33):
+    # compute the median of the single channel pixel intensities
+    v = np.median(image)
+    # apply automatic Canny edge detection using the computed median
+    lower = int(max(0, (1.0 - sigma) * v))
+    upper = int(min(255, (1.0 + sigma) * v))
+    edged = cv2.Canny(image, lower, upper)
+    return(edged)
+    # return the edged image
 
-def convert(gesture_folder, target_folder):
+# Extract Edges from Hand Frames
+def convertToEdge(gesture_folder, target_folder, swap_):
     rP = os.getcwd()
     mData = os.path.abspath(target_folder)
 
@@ -27,14 +40,58 @@ def convert(gesture_folder, target_folder):
     for gesture in tqdm(gestures, unit='actions', ascii=True):
         gesture_path = os.path.join(gesture_folder, gesture)
         os.chdir(gesture_path)
-
         gesture_frames_path = os.path.join(mData, gesture)
         if not os.path.exists(gesture_frames_path):
             os.makedirs(gesture_frames_path)
+        framedir = os.listdir(os.getcwd())
 
+        for imagePath in framedir:
+            if(imagePath.endswith(".jpeg") or imagePath.endswith(".jpg")):
+                fName = (os.getcwd()+ "\\" +imagePath)
+                fName = fName.replace(swap_,target_folder)
+                print("Extarcting edges in ",fName)
+                # load the image, convert it to grayscale, and blur it slightly
+                image = cv2.imread(imagePath)
+                gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+                blurred = cv2.GaussianBlur(gray, (3, 3), 0)
+                # apply Canny edge detection using a wide threshold, tight
+                # threshold, and automatically determined threshold
+                wide = cv2.Canny(blurred, 10, 200)
+                tight = cv2.Canny(blurred, 225, 250)
+                auto = auto_canny(blurred)
+                # show the images
+                # fName = mData + "\\" + imagePath
+                # print("Storing: ", fName)
+                cv2.imwrite(fName , tight)
+                #cv2.imshow("Original", image)
+                #cv2.imshow("Edges", np.hstack([wide, tight, auto]))
+
+
+
+# Extract Hands from Frames
+def convertToHand(gesture_folder, target_folder):
+    rP = os.getcwd()
+    mData = os.path.abspath(target_folder)
+
+    if not exists(mData):
+        os.makedirs(mData)
+
+    gesture_folder = os.path.abspath(gesture_folder)
+
+    os.chdir(gesture_folder)
+    gestures = os.listdir(os.getcwd())
+
+    print("Source Directory containing gestures: %s" % (gesture_folder))
+    print("Destination Directory containing frames: %s\n" % (mData))
+
+    for gesture in tqdm(gestures, unit='actions', ascii=True):
+        gesture_path = os.path.join(gesture_folder, gesture)
+        os.chdir(gesture_path)
+        gesture_frames_path = os.path.join(mData, gesture)
+        if not os.path.exists(gesture_frames_path):
+            os.makedirs(gesture_frames_path)
         videos = os.listdir(os.getcwd())
         videos = [video for video in videos if(os.path.isfile(video))]
-
         for video in tqdm(videos, unit='videos', ascii=True):
             name = os.path.abspath(video)
             cap = cv2.VideoCapture(name)  # capturing input video
@@ -44,8 +101,8 @@ def convert(gesture_folder, target_folder):
             os.chdir(gesture_frames_path)
             count = 0
 
-            # assumption only first 200 frames are important
-            while count < 201:
+            # assumption only first 60 frames are important
+            while count < fps:
                 ret, f = cap.read()  # extract frame
                 if ret is False:
                     break
@@ -63,8 +120,8 @@ def convert(gesture_folder, target_folder):
                     break
                 count += 1
 
-            # repeat last frame untill we get 200 frames
-            while count < 51:
+            # repeat last frame untill we get 60 frames
+            while count < fps:
                 fName = os.path.splitext(video)[0]
                 fName = fName + "_frame_" + str(count) + ".jpeg"
                 hc.append([join(gesture_frames_path, fName), gesture, frameCount])
@@ -79,9 +136,12 @@ def convert(gesture_folder, target_folder):
     os.chdir(rP)
 
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Extract Individual Frames from gesture videos.')
-    parser.add_argument('gesture_folder', help='olders of videos of different gestures.')
+    parser.add_argument('gesture_folder', help='folders of videos of different gestures.')
     parser.add_argument('target_folder', help='folder where extracted frames should be kept.')
+    parser.add_argument('final_folder', help='folder where the final edge frames should be kept.')
     args = parser.parse_args()
-    convert(args.gesture_folder, args.target_folder)
+    convertToHand(args.gesture_folder, args.target_folder)
+    convertToEdge(args.target_folder, args.final_folder, args.target_folder)
