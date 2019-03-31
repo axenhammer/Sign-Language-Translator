@@ -7,16 +7,13 @@ We aim to raise our AI model using the Machine Learning, Image Processing which 
 
 ## Intermediate Outputs
 #### RAW Feed (1920x1080 @ 60 fps)
-<img src="/docs/gifs/rawf_everyone.gif" width="360"/>
-<img src="/docs/gifs/rawf_kk.gif" width="360"/>
+<img src="/docs/gifs/rawf_everyone.gif" width="360"/><img src="/docs/gifs/rawf_kk.gif" width="360"/>
 
 #### Extraction of skin tones (Removal of unwanted entities)
-<img src="/docs/gifs/skin_ext_everyone.gif" width="360"/>
-<img src="/docs/gifs/skin_kk.gif" width="360"/>
+<img src="/docs/gifs/skin_ext_everyone.gif" width="360"/><img src="/docs/gifs/skin_kk.gif" width="360"/>
 
 #### Canny Edge Detection to extract only perimeter of change
-<img src="/docs/gifs/edges_everyone.gif" width="360"/>
-<img src="/docs/gifs/edges_kk.gif" width="360"/>
+<img src="/docs/gifs/edges_everyone.gif" width="360"/><img src="/docs/gifs/edges_kk.gif" width="360"/>
 
 
 ## Team/Organisation
