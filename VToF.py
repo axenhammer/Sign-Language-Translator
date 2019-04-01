@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+# Universal Sign Language Translator
+# Created by Team Axenhammer, https://github.com/Axenhammer
+# Licensed as LGPL-2.1
+
 from os.path import join, exists
 from tqdm import tqdm
 import tohand as th

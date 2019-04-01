@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+# Universal Sign Language Translator
+# Created by Team Axenhammer, https://github.com/Axenhammer
+# Licensed as LGPL-2.1
+
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
@@ -32,7 +37,3 @@ model.fit(X, y,batch_size=60,epochs=5,validation_split=0.2,callbacks=[tensorboar
 
 
 model.save('motion_detection.model')
-
-
-
-
