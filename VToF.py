@@ -14,58 +14,6 @@ import argparse
 
 hc = []
 fps = 183
-"""
-# Retrieves Current working folder Name
-def retrieve_name():
-  dir_path = os.path.dirname(os.path.realpath(os.getcwd()))
-  dirr = os.getcwd()
-  dirr=dirr.replace("\\\\","\\")
-  strr=dirr-dir_path
-  strr=dirr.replace(dir_path+"\\","")
-  return str(strr)
-
-
-# Extract Edges from Hand Frames
-def summateEdge(gesture_folder, target_folder, swap_):
-    rP = os.getcwd()
-    mData = os.path.abspath(target_folder)
-
-    if not exists(mData):
-        os.makedirs(mData)
-
-    gesture_folder = os.path.abspath(gesture_folder)
-
-    os.chdir(gesture_folder)
-    gestures = os.listdir(os.getcwd())
-
-    print("Source Directory containing gestures: %s" % (gesture_folder))
-    print("Destination Directory containing frames: %s\n" % (mData))
-
-    for gesture in tqdm(gestures, unit='actions', ascii=True):
-        gesture_path = os.path.join(gesture_folder, gesture)
-        os.chdir(gesture_path)
-        gesture_frames_path = os.path.join(mData, gesture)
-        if not os.path.exists(gesture_frames_path):
-            os.makedirs(gesture_frames_path)
-        framedir = os.listdir(os.getcwd())
-        x=[]
-        for imagePath in framedir:
-            if(imagePath.endswith(".jpeg") or imagePath.endswith(".jpg")):
-                x.append(cv2.imread(path+i,0))
-        p = x[0]
-    	k=1
-    	for i in x:
-    	    p[np.where(i> 190)]=0 + (255/60)*k
-    	    p += i
-    	    k += 1
-        cv2.imshow("hello",p)
-    	cv2.waitKey(0)
-        fName = (os.getcwd()+ "\\" +target_folder+"\\"+retrieve_name()+".jpeg")
-        fName = fName.replace(swap_,target_folder)
-    	cv2.imwrite(path,p)
-"""
-
-
 
 # Perform Auto Canny in automatic mode
 def auto_canny(image, sigma=0.33):
@@ -169,7 +117,6 @@ def convertToHand(gesture_folder, target_folder):
 
                 if not os.path.exists(fName):
                     f = th.handsegment(f)
-                    f = cv2.cvtColor(f, cv2.COLOR_BGR2GRAY)
                     lastFrame = f
                     cv2.imwrite(fName, f)
 
