@@ -7,6 +7,9 @@
 *.jpeg
 *.jpg
 
+# Testing
+/testing/*
+
 # Generated Dataset
 /target_folder/*
 /target_folder_1/*
