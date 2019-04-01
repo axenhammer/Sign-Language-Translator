@@ -9,28 +9,28 @@ import edge_detection as ed
 import cv2
 
 """
-# Red and Green based on the dataset
-boundary = [
-            ([0, 120, 0], [140, 255, 100]),
-            ([25, 0, 75], [180, 38, 255])
-           ]
+    # Red and Green based on the dataset
+    boundary = [
+                ([0, 120, 0], [140, 255, 100]),
+                ([25, 0, 75], [180, 38, 255])
+               ]
 
-# Skin colour (maha)
-boundary =  [
-            ([115,67,49], [237,206,187]),
-            ([180,157,139], [210,202,189])
-            ]
+    # Skin colour (maha)
+    boundary =  [
+                ([115,67,49], [237,206,187]),
+                ([180,157,139], [210,202,189])
+                ]
 
-# Skin colour (KK)
-boundary =  [
-            ([0,0,0],[147,120,120]),
-            ([180,157,139], [210,202,189])
-            ]
-# Skin colour (Ajay)
-boundary =  [
-            ([129,117,104],[200,160,125]),
-            ([0,0,0], [140,90,73])
-            ]
+    # Skin colour (KK)
+    boundary =  [
+                ([0,0,0],[147,120,120]),
+                ([180,157,139], [210,202,189])
+                ]
+    # Skin colour (Ajay)
+    boundary =  [
+                ([129,117,104],[200,160,125]),
+                ([0,0,0], [140,90,73])
+                ]
 """
 lower = np.array([0, 45, 80], dtype = "uint8")
 upper = np.array([20, 255, 255], dtype = "uint8")
