@@ -6,6 +6,7 @@ We aim to raise our AI model using the Machine Learning, Image Processing which 
 
 
 ## Intermediate Outputs
+The outputs below were taken directly from our model.
 #### RAW Feed (1920x1080 @ 60 fps)
 <img src="/docs/gifs/rawf_everyone.gif" width="360"/><img src="/docs/gifs/rawf_kk.gif" width="360"/>
 
