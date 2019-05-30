@@ -17,6 +17,24 @@ The outputs below were taken directly from our model.
 <img src="/docs/gifs/edges_everyone.gif" width="360"/><img src="/docs/gifs/edges_kk.gif" width="360"/>
 
 
+## Getting Started
+### Prerequisites
+What things you need to run the program:
+- Python Compiler (3.7 Recommended)
+- A clone of this repository :P
+- **Easy Way:** Install all the necessary packages form pypi by using the following command:
+  ```bash
+  pip install -r requirement.txt
+  ```
+- If you still prefer the old fashioned way, then use the following commands:
+    ```bash
+    pip install opencv-python
+    pip install matplotlib
+    pip install numpy
+    pip install tqdm
+    ```
+
+
 ## Team/Organisation
 * **Team Axenhammer** - [Axenhammer](https://github.com/axenhammer)
 
