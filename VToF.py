@@ -3,17 +3,22 @@
 # Created by Team Axenhammer, https://github.com/Axenhammer
 # Licensed as LGPL-2.1
 
+import os
 from os.path import join, exists
 from tqdm import tqdm
 import tohand as th
+import find_total_frames as ftf
 import numpy as np
 import cv2
-import os
 import pickle
 import argparse
 
 hc = []
-fps = 183
+# assumption only first @default_fps frames are important
+default_fps = fps = 183 # most test cases fall under 183 frames
+full_load = False # Process only upto @default_fps frames in a video
+# Uncomment the below line if you want to process every frame (Might cause huge runtimes)
+# full_load = True # Process every frame in a video
 
 # Perform Auto Canny in automatic mode
 def auto_canny(image, sigma=0.33):
@@ -26,22 +31,18 @@ def auto_canny(image, sigma=0.33):
     return(edged)
     # return the edged image
 
+
 # Extract Edges from Hand Frames
 def convertToEdge(gesture_folder, target_folder, swap_):
     rP = os.getcwd()
     mData = os.path.abspath(target_folder)
-
     if not exists(mData):
         os.makedirs(mData)
-
     gesture_folder = os.path.abspath(gesture_folder)
-
     os.chdir(gesture_folder)
     gestures = os.listdir(os.getcwd())
-
     print("Source Directory containing gestures: %s" % (gesture_folder))
     print("Destination Directory containing frames: %s\n" % (mData))
-
     for gesture in tqdm(gestures, unit='actions', ascii=True):
         gesture_path = os.path.join(gesture_folder, gesture)
         os.chdir(gesture_path)
@@ -49,12 +50,11 @@ def convertToEdge(gesture_folder, target_folder, swap_):
         if not os.path.exists(gesture_frames_path):
             os.makedirs(gesture_frames_path)
         framedir = os.listdir(os.getcwd())
-
         for imagePath in framedir:
             if(imagePath.endswith(".jpeg") or imagePath.endswith(".jpg")):
                 fName = (os.getcwd()+ "\\" +imagePath)
                 fName = fName.replace(swap_,target_folder)
-                print("Extarcting edges in ",fName)
+                print("Extracting edges in ",fName)
                 # load the image, convert it to grayscale, and blur it slightly
                 image = cv2.imread(imagePath)
                 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -72,25 +72,21 @@ def convertToEdge(gesture_folder, target_folder, swap_):
                 #cv2.imshow("Edges", np.hstack([wide, tight, auto]))
 
 
-
 # Extract Hands from Frames
 def convertToHand(gesture_folder, target_folder):
     rP = os.getcwd()
     mData = os.path.abspath(target_folder)
-
     if not exists(mData):
         os.makedirs(mData)
-
     gesture_folder = os.path.abspath(gesture_folder)
-
     os.chdir(gesture_folder)
     gestures = os.listdir(os.getcwd())
-
     print("Source Directory containing gestures: %s" % (gesture_folder))
     print("Destination Directory containing frames: %s\n" % (mData))
-
     for gesture in tqdm(gestures, unit='actions', ascii=True):
-        gesture_path = os.path.join(gesture_folder, gesture)
+        #gesture_path = os.path.join(gesture_folder, gesture)
+        gesture_path = gesture_folder
+        #print(gesture_folder)
         os.chdir(gesture_path)
         gesture_frames_path = os.path.join(mData, gesture)
         if not os.path.exists(gesture_frames_path):
@@ -102,11 +98,12 @@ def convertToHand(gesture_folder, target_folder):
             cap = cv2.VideoCapture(name)  # capturing input video
             frameCount = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
             lastFrame = None
-
             os.chdir(gesture_frames_path)
             count = 0
-
-            # assumption only first 60 frames are important
+            if full_load:
+                fps = default_fps
+                fps = ftf.find_frames(name)
+            # assumption only first @fps frames are important
             while count < fps:
                 ret, f = cap.read()  # extract frame
                 if ret is False:
@@ -123,8 +120,7 @@ def convertToHand(gesture_folder, target_folder):
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
                 count += 1
-
-            # repeat last frame untill we get 60 frames
+            # repeat last frame untill we @fps value is reached (Exception/ if full_load = False)
             while count < fps:
                 fName = os.path.splitext(video)[0]
                 fName = fName + "_frame_" + str(count) + ".jpeg"
@@ -132,13 +128,10 @@ def convertToHand(gesture_folder, target_folder):
                 if not os.path.exists(fName):
                     cv2.imwrite(fName, lastFrame)
                 count += 1
-
             os.chdir(gesture_path)
             cap.release()
             cv2.destroyAllWindows()
-
     os.chdir(rP)
-
 
 
 if __name__ == '__main__':
