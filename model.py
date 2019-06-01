@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Universal Sign Language Translator
 # Created by Team Axenhammer, https://github.com/Axenhammer
-# Licensed as LGPL-2.1
+# Licensed as MIT
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
