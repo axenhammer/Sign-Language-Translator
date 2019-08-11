@@ -1,5 +1,13 @@
-# Universal Sign Language Translator
-[![Language](https://img.shields.io/badge/language-python-blue.svg?style=flat)](https://www.python.org)
+<h1 align="center">
+  Universal Sign Language Translator
+</h1>
+
+<p align="center">
+  <a href="https://www.python.org"><img src="https://img.shields.io/badge/language-python-blue.svg?style=flat"></a>
+  <a href="#"><img src="https://img.shields.io/github/last-commit/axenhammer/Sign-Language-Translator.svg"></a>
+  <a href="/LICENSE.md"><img src="https://img.shields.io/github/license/axenhammer/Sign-Language-Translator.svg?color=blue"></a>
+</p>
+
 
 ## Introduction
 We aim to raise our AI model using the Machine Learning, Image Processing which involved repeatedly gesturing in front of a camera to teach the system the fundamentals of sign language. This is to combat the differences between various Country’s sign languages and their regional dialects without compromising on accuracy while giving way to crowd-sourcing.
@@ -40,7 +48,14 @@ What things you need to run the program:
 
 
 ## Authors
-* **Krishna Alagiri** - [KrishnaAlagiri](https://github.com/KrishnaAlagiri/)
+* **Krishna Alagiri** - [K-Kraken](https://github.com/K-Kraken/)
 * **Mahalakshumi V** - [maha2000](https://github.com/maha2000/)
 * **Ajay Krishnan** - [ajaykrishnan23](https://github.com/ajaykrishnan23/)
 * **Saiharshith** - [harshith2000](https://github.com/harshith2000/)
+
+
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/axenhammer"> Axemhammer</a>
+</p>
+
+![wave](http://cdn.thekrishna.in/img/common/border.png)
