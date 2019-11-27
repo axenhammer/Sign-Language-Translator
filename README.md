@@ -51,7 +51,6 @@ What things you need to run the program:
 * **Krishna Alagiri** - [K-Kraken](https://github.com/K-Kraken/)
 * **Mahalakshumi V** - [maha2000](https://github.com/maha2000/)
 * **Ajay Krishnan** - [ajaykrishnan23](https://github.com/ajaykrishnan23/)
-* **Saiharshith** - [harshith2000](https://github.com/harshith2000/)
 
 
 <p align="center">
