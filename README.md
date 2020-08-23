@@ -51,8 +51,8 @@ What things you need to run the program:
 
 | Krishnakanth Alagiri | Mahalakshumi V |
 |----------------------|----------------|
-| [![f](https://avatars1.githubusercontent.com/u/39209037?s=86)](https://github.com/K-Kraken) | [![f](https://avatars2.githubusercontent.com/u/40058339?s=86)](https://github.com/mahavisvanathan) | 
-| [@K-Kraken](https://github.com/K-Kraken) | [@mahavisvanathan](https://github.com/mahavisvanathan) |
+| [![f](https://avatars1.githubusercontent.com/u/39209037?s=86)](https://github.com/bearlike) | [![f](https://avatars2.githubusercontent.com/u/40058339?s=86)](https://github.com/mahavisvanathan) | 
+| [@K-Kraken](https://github.com/bearlike) | [@mahavisvanathan](https://github.com/mahavisvanathan) |
 
 <p align="center">
   Made with ❤️ by <a href="https://github.com/axenhammer"> Axemhammer</a>
