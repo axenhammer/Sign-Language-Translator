@@ -47,9 +47,12 @@ What things you need to run the program:
 * **Team Axenhammer** - [Axenhammer](https://github.com/axenhammer)
 
 
-## Authors
-* **Krishna Alagiri** - [K-Kraken](https://github.com/K-Kraken/)
-* **Mahalakshumi V** - [maha2000](https://github.com/maha2000/)
+## Contributors
+
+| Krishnakanth Alagiri | Mahalakshumi V |
+|----------------------|----------------|
+| [![f](https://avatars1.githubusercontent.com/u/39209037?s=86)](https://github.com/K-Kraken) | [![f](https://avatars2.githubusercontent.com/u/40058339?s=86)](https://github.com/mahavisvanathan) | 
+| [@K-Kraken](https://github.com/K-Kraken) | [@mahavisvanathan](https://github.com/mahavisvanathan) |
 
 <p align="center">
   Made with ❤️ by <a href="https://github.com/axenhammer"> Axemhammer</a>
