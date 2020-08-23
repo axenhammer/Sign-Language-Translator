@@ -50,8 +50,6 @@ What things you need to run the program:
 ## Authors
 * **Krishna Alagiri** - [K-Kraken](https://github.com/K-Kraken/)
 * **Mahalakshumi V** - [maha2000](https://github.com/maha2000/)
-* **Ajay Krishnan** - [ajaykrishnan23](https://github.com/ajaykrishnan23/)
-
 
 <p align="center">
   Made with ❤️ by <a href="https://github.com/axenhammer"> Axemhammer</a>
