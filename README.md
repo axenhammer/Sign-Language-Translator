@@ -1,5 +1,5 @@
 <h1 align="center">
-  Universal Sign Language Translator
+  Linguistic Sign Language Translator
 </h1>
 
 <p align="center">
